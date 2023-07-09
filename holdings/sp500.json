@@ -2,7 +2,7 @@
   "stocks": [
     "MSFT",
     "NVDA",
-    "BRKB",
+    "BRK.B",
     "TSLA",
     "XOM",
     "JNJ",
@@ -86,7 +86,8 @@
     "ADSK",
     "PH",
     "FTNT",
-    "XTSLA",
+    "X",
+    "TSLA",
     "IDXX",
     "JCI",
     "CTAS",
