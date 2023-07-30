@@ -1,4 +1,4 @@
-from tradingview_stock_scroller import TradingViewWatcher
+from classes.TradingViewWatcher import TradingViewWatcher
 
 watcher = TradingViewWatcher("./holdings/nasdaq_100.json", "JSON")
 

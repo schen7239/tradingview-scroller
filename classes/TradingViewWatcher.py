@@ -3,33 +3,11 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 import json
 import time
-from pynput import keyboard
-
-
-
-
-class KeyHandler:
-    def __init__(self):
-        self.last_key_pressed = None
-        pass
-    def on_key_press(self, key):
-        if (key == keyboard.Key.left):
-            self.set_last_key_pressed(-1)
-        elif(key == keyboard.Key.right):
-            self.set_last_key_pressed(1)
-        elif(key == keyboard.Key.esc):
-            self.set_last_key_pressed("ESCAPE")
-        else:
-            self.set_last_key_pressed(None)
-    
-    def get_last_key_pressed(self):
-        return self.last_key_pressed
-    def set_last_key_pressed(self, val):
-        self.last_key_pressed = val
+from .KeyboardHandler import KeyboardHandler
 
 class TradingViewWatcher:
     def __init__(self, file, format = "JSON") -> None:
-        self.key_handler = KeyHandler()
+        self.key_handler = KeyboardHandler()
         if format == "JSON":
             f = open(file)
             self.stocks =  json.load(f)["stocks"]
@@ -42,9 +20,7 @@ class TradingViewWatcher:
         browser = webdriver.Chrome()
         
         browser.get('https://www.tradingview.com/chart')
-        
-        listener = keyboard.Listener(on_press=self.key_handler.on_key_press)
-        listener.start()
+        self.key_handler.init_listener()
         while True:
             while self.key_handler.get_last_key_pressed() is None:
                 time.sleep(0.1)
@@ -67,5 +43,5 @@ class TradingViewWatcher:
             modal.send_keys(self.stocks[position])
             modal.send_keys(Keys.RETURN)
             self.key_handler.set_last_key_pressed(None)
-        listener.stop()    
+        self.key_handler.remove_listener()
         browser.quit()
