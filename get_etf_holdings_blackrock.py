@@ -10,7 +10,7 @@ russell_2000_holdings = []
 
 browser = webdriver.Chrome()
 
-browser.get("https://www.blackrock.com/americas-offshore/en/products/253741/ishares-nasdaq-100-ucits-etf")
+browser.get("https://www.ishares.com/us/products/272532/?cid=ppc:ish_us:ish_us_br_megatrends_exponentialtechnology_nonproduct_ei_phrase:google:brand_nonprod:ei&gclid=Cj0KCQjwqs6lBhCxARIsAG8YcDi7NldJlL48p-3uIe1df8Ebrw3kHtR8DvgS0Dgf5FxMBwiHTdJhHDcaAoxlEALw_wcB&gclsrc=aw.ds")
 time.sleep(10)
 
 stocks_even = browser.find_elements(By.CLASS_NAME, "even")
@@ -30,7 +30,7 @@ data = {
     "sp500_holdings": russell_2000_holdings
 }
 
-with open('nasdaq_100.json', 'w') as f:
+with open('./holdings/XT_ishares.json', 'w') as f:
     json.dump(data, f)
         
 

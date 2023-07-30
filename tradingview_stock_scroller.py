@@ -26,7 +26,6 @@ class KeyHandler:
         return self.last_key_pressed
     def set_last_key_pressed(self, val):
         self.last_key_pressed = val
-        print(val)
 
 class TradingViewWatcher:
     def __init__(self, file, format = "JSON") -> None:
