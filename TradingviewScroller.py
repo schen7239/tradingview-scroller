@@ -1,6 +1,6 @@
-from classes.TradingViewWatcher import TradingViewWatcher
-from constants.TradingViewWatcherConstants import FileTypes, ScrollType
+from src.classes.TradingViewWatcher import TradingViewWatcher
+from src.constants.TradingViewWatcherConstants import FileTypes, ScrollType
 
-watcher = TradingViewWatcher("./holdings/nasdaq_100.json", FileTypes.JSON, ScrollType.MANUAL)
+watcher = TradingViewWatcher("./holdings/russell_2000.json", FileTypes.JSON, ScrollType.MANUAL, 60)
 
-watcher.run(0)
+watcher.run()
