@@ -74,6 +74,7 @@ class TradingViewWatcher:
             browser.find_element(By.ID, "header-toolbar-symbol-search").click()
             modal = browser.find_element(By.CLASS_NAME, "search-ZXzPWcCf")
             self.position = self.position + self.key_handler.get_last_key_pressed()
+            print(self.position)
             time.sleep(0.2)
             modal.send_keys(self.stocks[self.position])
             modal.send_keys(Keys.RETURN)
